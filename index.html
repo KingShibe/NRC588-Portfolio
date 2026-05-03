@@ -7,18 +7,25 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: #112231;
       display: flex;
       flex-direction: column;
       height: 100vh;
     }
 
     #titleBar {
-      background: #333;
-      color: white;
+      background: #547a81;
+      color: #D4ECDD;
       padding: 10px;
       text-align: center;
       font-size: 18px;
+    }
+
+    #footerBar {
+      color: #d4ecdd5b;
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
     }
 
     #viewerContainer {
@@ -43,12 +50,12 @@
       font-size: 40px;
       cursor: pointer;
       user-select: none;
-      color: #333;
+      color: #e5f0e9;
       padding: 10px;
     }
 
     .arrow:hover {
-      color: #000;
+      color: #e4f3ea;
     }
 
     #leftArrow {
@@ -84,7 +91,7 @@
 
     function loadPage(index) {
       viewer.src = pages[index].file;
-      titleBar.textContent = pages[index].title;
+      titleBar.textContent = "NRC 588: " + pages[index].title;
     }
 
     document.getElementById("leftArrow").onclick = () => {
@@ -102,4 +109,7 @@
   </script>
 
 </body>
+<footer>
+  <div id="footerBar">Created By Henry Branham</div>
+</footer> 
 </html>
