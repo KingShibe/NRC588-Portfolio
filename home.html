@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NRC588 Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    #titleBar {
+      background: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    #viewerContainer {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    iframe {
+      width: 80%;
+      height: 90%;
+      border: 2px solid #ccc;
+      background: white;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      cursor: pointer;
+      user-select: none;
+      color: #333;
+      padding: 10px;
+    }
+
+    .arrow:hover {
+      color: #000;
+    }
+
+    #leftArrow {
+      left: 10px;
+    }
+
+    #rightArrow {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="titleBar">NRC588 Portfolio</div>
+
+  <div id="viewerContainer">
+    <div id="leftArrow" class="arrow">&#8592;</div>
+    <iframe id="viewer" src=""></iframe>
+    <div id="rightArrow" class="arrow">&#8594;</div>
+  </div>
+
+  <script>
+    const pages = [
+      { title: "Product 1", file: "./product1/index.html" },
+      { title: "Product 2", file: "./product2/index.html" },
+      { title: "Product 3", file: "./product3/index.html" }
+    ];
+
+    let currentIndex = 0;
+
+    const viewer = document.getElementById("viewer");
+    const titleBar = document.getElementById("titleBar");
+
+    function loadPage(index) {
+      viewer.src = pages[index].file;
+      titleBar.textContent = pages[index].title;
+    }
+
+    document.getElementById("leftArrow").onclick = () => {
+      currentIndex = (currentIndex - 1 + pages.length) % pages.length;
+      loadPage(currentIndex);
+    };
+
+    document.getElementById("rightArrow").onclick = () => {
+      currentIndex = (currentIndex + 1) % pages.length;
+      loadPage(currentIndex);
+    };
+
+    // Initial load
+    loadPage(currentIndex);
+  </script>
+
+</body>
+</html>
