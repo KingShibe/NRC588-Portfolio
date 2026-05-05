@@ -40,6 +40,8 @@
             // Get the inner map.
             const innerMap = mapElement.innerMap;
 
+            const infoWindow = new google.maps.InfoWindow();
+
             // Set map options
             innerMap.setOptions({
                 center: { lat: -33.88811419253263, lng: 151.27842078123513 },
@@ -71,25 +73,41 @@
             ];
 
             for (const loc of locations) {
-                const pin = new PinElement();
+                const pin = new PinElement({
+                    background: "#4285F4",
+                    borderColor: "#1a73e8",
+                    glyphColor: "white",
+                });
                 const content = pin.element;
 
                 content.style.transition = "transform 0.2s ease";
 
                 content.addEventListener("mouseenter", () => {
                     content.style.transform = "scale(1.2)";
+                    pin.background = "#EA4335";
+                    pin.borderColor = "#C5221F";
                 });
 
                 content.addEventListener("mouseleave", () => {
                     content.style.transform = "scale(1)";
+                    pin.background = "#4285F4";
+                    pin.borderColor = "#1a73e8";
                 });
 
-                new AdvancedMarkerElement({
+                const marker = new AdvancedMarkerElement({
                     map: innerMap,
                     position: loc.position,
                     title: loc.title,
                     content: content,
                 });
+
+                marker.addListener("click", () => {
+                    infoWindow.setContent(`<div><strong>${loc.title}</strong></div>`);
+                    infoWindow.open({
+                        map: innerMap,
+                        anchor: marker
+                    })
+                })
             }
         }
 
