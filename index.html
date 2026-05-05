@@ -65,6 +65,27 @@
     #rightArrow {
       right: 10px;
     }
+
+    #revisionsContainer {
+      background: #1b2f3a;
+      color: #D4ECDD;
+      padding: 15px;
+      width: 80%;
+      margin: 0 auto 10px auto;
+      border-radius: 6px;
+    }
+
+    #revisionsContainer h3 {
+      margin-top: 0;
+    }
+
+    #revisionsList {
+      padding-left: 20px;
+    }
+
+    #revisionsList li {
+      margin-bottom: 6px;
+    }
   </style>
 </head>
 <body>
@@ -77,21 +98,28 @@
     <div id="rightArrow" class="arrow">&#8594;</div>
   </div>
 
+  <div id="revisionsContainer">
+    <h3>Product Revisions:</h3>
+    <ul id="revisionDesc">Revision 1</ul>
+  </div>
+
   <script>
     const pages = [
-      { title: "Product 1", file: "./product1/index.html" },
-      { title: "Product 2", file: "./product2/index.html" },
-      { title: "Product 3", file: "./product3/index.html" }
+      { title: "Favorite Bondi Beach Cafes - Google Map", file: "./product1/index.html", revDesc: "Added color changing hover effect to markers, location information popup containing name/image" },
+      { title: "Product 2", file: "./product2/index.html", revDesc: "" },
+      { title: "Product 3", file: "./product3/index.html", revDesc: "" }
     ];
 
     let currentIndex = 0;
 
     const viewer = document.getElementById("viewer");
     const titleBar = document.getElementById("titleBar");
+    const revisionDescription = document.getElementById("revisionDesc");
 
     function loadPage(index) {
       viewer.src = pages[index].file;
       titleBar.textContent = "NRC 588: " + pages[index].title;
+      revisionDescription.textContent = pages[index].revDesc;
     }
 
     document.getElementById("leftArrow").onclick = () => {
