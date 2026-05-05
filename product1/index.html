@@ -53,22 +53,27 @@
                 {
                     title: "Harry's Bondi",
                     position: { lat: -33.88811419253263, lng: 151.27842078123513 },
+                    img: "https://lh3.googleusercontent.com/p/AF1QipOHJ36u5xq3NtHG1Aj9bNGkZbXy407tGC9qv3wz=s680-w680-h510-rw"
                 },
                 {
                     title: "The Depot",
                     position: { lat: -33.888314771315386, lng: 151.27795481608675 },
+                    img: "https://thedepotbondi.com/cdn/shop/files/Artboard_3_1520x.jpg?v=1650602172"
                 },
                 {
                     title: "Cafe Bondi",
                     position: { lat: -33.88954306284465, lng: 151.28289918873566 },
+                    img: "https://lh3.googleusercontent.com/p/AF1QipPygvtufvZ-I-9f4I2nF4TNGiqgS_oShdyNZYD-=s680-w680-h510-rw"
                 },
                 {
                     title: "G’day Bondi Cafe",
                     position: { lat: -33.88637763212946, lng: 151.27973580286914 },
+                    img: "https://lh3.googleusercontent.com/p/AF1QipNLnf_zo0Uv0gdnySxGNcUxpb7zx3JJ_1f-j7uI=s680-w680-h510-rw"
                 },
                 {
                     title: "Parida Bondi",
                     position: { lat: -33.88925053950151, lng: 151.27599884661728 },
+                    img: "https://lh3.googleusercontent.com/p/AF1QipM8wl8jiw2ncACCpySVq8KIld-YCH0n5M4kt_2E=s680-w680-h510-rw"
                 },
             ];
 
@@ -102,7 +107,18 @@
                 });
 
                 marker.addListener("click", () => {
-                    infoWindow.setContent(`<div><strong>${loc.title}</strong></div>`);
+                    infoWindow.setContent(`
+                        <div style="text-align:center;">
+                            <div style="font-size:16px; font-weight:bold; margin-bottom:6px;">
+                            ${loc.title}
+                            </div>
+                            <img 
+                            src="${loc.img}" 
+                            style="max-width:200px; height:auto; display:block; margin:0 auto;"
+                            />
+                        </div>
+                    `);
+
                     infoWindow.open({
                         map: innerMap,
                         anchor: marker
